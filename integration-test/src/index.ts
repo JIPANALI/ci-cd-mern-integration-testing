@@ -8,7 +8,7 @@ app.use(express.json());
 app.post("/sum", async (req, res) => {
     const a = req.body.a;
     const b = req.body.b;
-    
+    console.log("hi");
     if (a > 1000000 || b > 1000000) {
         return res.status(422).json({
             message: "Sorry we dont support big numbers"
