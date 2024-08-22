@@ -1,34 +1,34 @@
 name: CI/CD Pipeline
 
 on:
-  push:
+  push: #any time there is push on main branch this ci/cd pipe line will execute
     branches:
-      - main
-      -master
-  pull_request:
+      - master
+ 
+  pull_request:  #any time there is pull on main branch this ci/cd pipe line will execute
     branches:
-      - main
-      -master
+      - master
+
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  test:  #test jobs
+    runs-on: ubuntu-latest   #run on ubuntu
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Checkout code  
+      uses: actions/checkout@v2   #checkout the code usig this
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      uses: docker/setup-buildx-action@v2    #check docker is install or not
 
     - name: Set up Docker Compose
-      uses: docker/setup-qemu-action@v2
+      uses: docker/setup-qemu-action@v2  #is there docker compose actually there
 
     - name: Ensure Docker Compose is available
       run: docker-compose version
 
-    - name: Copy .env.example to .env
+    - name: Copy .env.example to .env  #copy the .env.example to .env
       run: cp integration-test/.env.example ./integration-test/.env
 
     - name: Run integration script
-      run: cd integration-test && npm run test:integration
+      run: cd integration-test && npm run test:integration      #cd  folder then run this test and in json where test is declare
