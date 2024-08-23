@@ -31,5 +31,8 @@ jobs:
       - name: Copy .env.example to .env  # Copy the .env.example to .env
         run: cp integration-test/.env.example integration-test/.env
 
+      - name: Grant execute permissions to the integration script
+        run: chmod +x integration-test/scripts/run-integration.sh  # Grant execute permissions to the script
+
       - name: Run integration script
         run: cd integration-test && npm run test:integration  # Change directory and run integration tests
