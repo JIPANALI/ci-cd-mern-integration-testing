@@ -26,6 +26,7 @@ app.post("/sum", async (req, res) => {
     })
     console.log(request)
     console.log(request)
+    console.log(request)
 
     res.json({ answer: result, id: request.id });
 })
